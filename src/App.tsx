@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { State } from "./main"
+import { State } from './store/cashReducer'
+import { Action, Dispatch } from 'redux'
 
 const App: FC = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<Dispatch<Action>>()
   const cash = useSelector<State, number>(state => state.cash)
 
   const addCash = (cash: number) => {
