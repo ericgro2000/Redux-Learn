@@ -1,11 +1,12 @@
 import { FC } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { State } from './store/cashReducer'
+import { cashState } from './store/cashReducer'
+import { customerState } from './store/customerReducer'
 import { Action, Dispatch } from 'redux'
 
 const App: FC = () => {
   const dispatch = useDispatch<Dispatch<Action>>()
-  const cash = useSelector<State, number>(state => state.cash)
+  const cash = useSelector<cashState | customerState, number>(state => state.cash.cash)
 
   const addCash = (cash: number) => {
     dispatch({ type: "ADD_CASH", payload: cash })

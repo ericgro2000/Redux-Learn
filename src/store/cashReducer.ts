@@ -1,5 +1,5 @@
 
-export interface State {
+export interface cashState {
     cash: number;
   }
   
@@ -8,7 +8,7 @@ export interface State {
     payload: number;
   }
   
-  const defaultState: State = {
+  const defaultState: cashState = {
     cash:0,
   }
   
