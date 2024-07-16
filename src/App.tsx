@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from './store/store'
-import { Customer, CustomerState } from './store/customerReducer'
+import { Customer, CustomerState, addCustomerAction, removeCustomerAction } from './store/customerReducer'
 
 const App: FC = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -21,12 +21,12 @@ const App: FC = () => {
     name,
     id: Date.now(),
     }
-    dispatch({type: "ADD_CUSTOMER", payload: customer})
+    dispatch(addCustomerAction(customer))
     }
   
     const removeClient = (customer:Customer) => {
       console.log(customer.id,customer.name)
-      dispatch({type: "REMOVE_CUSTOMER", payload: customer})
+      dispatch(removeCustomerAction(customer))
       }
 
   return (
