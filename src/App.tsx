@@ -25,7 +25,8 @@ const App: FC = () => {
     }
   
     const removeClient = (customer:Customer) => {
-      dispatch({type: "REMOVE_CUSTOMERS", payload: customer.id})
+      console.log(customer.id,customer.name)
+      dispatch({type: "REMOVE_CUSTOMER", payload: customer})
       }
 
   return (
@@ -40,7 +41,7 @@ const App: FC = () => {
       {customers.length >0?
       <div>
         {customers.map(customer =>
-           <div key={customer.id} onClick={()=>removeClient(customer)}>{customer.name}</div>
+           <div style={{fontSize:"2rem",border:"1px solid black"}} key={customer.id} onClick={()=>removeClient(customer)}>{customer.name}</div>
         )}
       </div>:
       <div style={{fontSize:"2rem",marginTop:"5px"}}>
