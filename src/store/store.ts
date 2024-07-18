@@ -4,15 +4,9 @@ import { CustomerState, customerReducer } from "./customerReducer";
 import {composeWithDevTools} from "redux-devtools-extension"
 import { thunk } from "redux-thunk";
 
-interface rootReducer {
-    // idk
-    // cash: (arg0: cashState,arg1: action) => void
-    // customers: (arg0: CustomerState,arg1: Action) => void
-    cash: cashState;
-    customers: CustomerState;
-  }
 
-const rootReducer = combineReducers<rootReducer>({
+
+const rootReducer = combineReducers({
     cash:cashReducer,
     customers:customerReducer
 })
