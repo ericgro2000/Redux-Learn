@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from './store/store'
+import { AppDispatch, RootState } from "./store/store"
 import { Customer, CustomerState, addCustomerAction, removeCustomerAction } from './store/customerReducer'
+import { fetchCustomers } from './store/asyncActions/customers'
 
 const App: FC = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -28,7 +29,9 @@ const App: FC = () => {
       console.log(customer.id,customer.name)
       dispatch(removeCustomerAction(customer))
       }
-
+      // customers.map(customer =>{
+      //   console.log(customer)
+      // })
   return (
     <div className={'app'}>
       <div style={{ fontSize: "2rem" }}>Amount:{cash}</div>
@@ -36,18 +39,21 @@ const App: FC = () => {
         <button onClick={() => addCash(Number(prompt()))}>Deposit</button>
         <button onClick={() => getCash(Number(prompt()))}>Withdraw</button>
         <button onClick={() => addCustomer(String(prompt()))}>Add client</button>
-        {/* <button onClick={() => removeClient(String(prompt()))}>Remove client</button> */}
+        <button onClick={() => dispatch(fetchCustomers())}>add clients</button>
       </div>
-      {customers.length >0?
-      <div>
-        {customers.map(customer =>
-           <div style={{fontSize:"2rem",border:"1px solid black"}} key={customer.id} onClick={()=>removeClient(customer)}>{customer.name}</div>
-        )}
-      </div>:
-      <div style={{fontSize:"2rem",marginTop:"5px"}}>
-
+      {customers.length > 0 ? (
+  <div>
+    {customers.map(customer => (
+      <div style={{ fontSize: "2rem", border: "1px solid black" }} key={customer.id} onClick={() => removeClient(customer)}>
+        {customer.name}
       </div>
-      }
+    ))}
+  </div>
+) : (
+  <div style={{ fontSize: "2rem", marginTop: "5px" }}>
+    No customers available.
+  </div>
+)}
     </div>
   )
 }
