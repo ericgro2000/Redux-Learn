@@ -1,5 +1,5 @@
 
-export interface cashState {
+export interface CashState {
   cash: number;
 }
   
@@ -8,7 +8,7 @@ export interface action {
     payload: number;
 }
   
-const defaultState: cashState = {
+const defaultState: CashState = {
     cash:0,
 }
   
