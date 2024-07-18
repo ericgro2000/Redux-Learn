@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "./store/store"
-import { Customer, CustomerState, addCustomerAction, removeCustomerAction } from './store/customerReducer'
+import { Customer, addCustomerAction, removeCustomerAction } from './store/customerReducer'
 import { fetchCustomers } from './store/asyncActions/customers'
 
 const App: FC = () => {
